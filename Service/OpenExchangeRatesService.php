@@ -10,6 +10,7 @@ namespace Mrzard\OpenExchangeRatesBundle\Service;
 
 use Guzzle\Http\Client;
 use Guzzle\Http\Message\Request;
+use Guzzle\Http\Message\RequestInterface;
 
 /**
  * Class OpenExchangeRatesService
@@ -82,7 +83,7 @@ class OpenExchangeRatesService
     /**
      * Get if https is enabled
      *
-     * @return mixed
+     * @return boolean
      */
     public function useHttps()
     {
@@ -92,7 +93,7 @@ class OpenExchangeRatesService
     /**
      * Sets whether to use https
      *
-     * @param $https
+     * @param boolean $https
      */
     public function setHttps($https)
     {
@@ -112,7 +113,7 @@ class OpenExchangeRatesService
     /**
      * Set the base currency
      *
-     * @param $baseCurrency
+     * @param string $baseCurrency
      */
     public function setBaseCurrency($baseCurrency)
     {
@@ -196,11 +197,11 @@ class OpenExchangeRatesService
     /**
      * Run guzzle request
      *
-     * @param Request $request
+     * @param RequestInterface $request
      *
      * @return array
      */
-    private function runRequest(Request $request)
+    private function runRequest(RequestInterface $request)
     {
         try {
             $request->send();
