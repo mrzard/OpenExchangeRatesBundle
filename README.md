@@ -2,6 +2,10 @@
 OpenExchangeRates for Symfony2
 ==============================
 
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mrzard/OpenExchangeRatesBundle/badges/quality-score.png?s=4d7b367f4b6e520f529836f96f6f8ff6fef7ceee)](https://scrutinizer-ci.com/g/mrzard/OpenExchangeRatesBundle/)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/ce4cd1cd-f4e5-42ed-8881-7a7d436f4f41/mini.png)](https://insight.sensiolabs.com/projects/ce4cd1cd-f4e5-42ed-8881-7a7d436f4f41)
+
 ## Installation
 
 ``` yml
@@ -49,8 +53,8 @@ If you're using a free version, you won't need to change the `https` or
 
 ## Usage
 
-You can access the service by getting it from the container under 
-open_exchange_rates_service  
+You can access the service by getting it from the container under
+open_exchange_rates_service
 
 Keep in mind that some options will only work properly with an
 Enterprise/Unlimited Plan
