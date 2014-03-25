@@ -5,7 +5,7 @@ Installation
 -----
 ``` yml
 "require": {
-    "php": ">=5.3.0",
+    "php": ">=5.4.0",
     "symfony/symfony": ">=2.3.0",
     "mrzard/open-exchange-rates-bundle": "dev-master"
 }
@@ -31,7 +31,6 @@ return array(
 
 ## Configuration
 You will have to define your api id in the parameters.yml file of you environment.
-
 ``` yml
 open_exchange_rates_service:
     api_id: YOUR_API_ID
@@ -50,6 +49,8 @@ You can access the service by getting it from the container under open_exchange_
 Keep in mind that some options will only work properly with an Enterprise/Unlimited Plan
 
 ## Free features
+
+### Get latest exchange rates
 ``` php
 /**
  * Get the latest exchange rates
@@ -83,6 +84,7 @@ Sample returns:
 */
 ```
 
+### Get available currencies
 ``` php
     /**
      * Gets a list of all available currencies
@@ -105,6 +107,7 @@ array(
 ```
 
 
+### Get historical data for a date
 ``` php
 /**
  * Get historical data
@@ -139,6 +142,7 @@ array (size=5)
 ```
 
 ## Developer / Unlimited features
+### Get the latest exchange rates, limiting the return array
 ``` php
 $openExchangeRatesService->getLatest(['EUR', 'USD', 'COP']);
 /*output:
@@ -155,8 +159,11 @@ array (size=5)
     )
 */
 ```
+You can also change the base currency used to get the latest exchange rates with the second
+parameter
 
 ## Unlimited features
+### Directly convert a quantity between currencies
 ``` php
     $openExchangeRatesService->convert(10, 'USD', 'EUR');
 ```

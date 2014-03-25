@@ -1,0 +1,7 @@
+framework:
+    secret: testsecretnotsosecret
+    test: true
+
+open_exchange_rates:
+    api_id: f4k31d
+    api_configuration: ~

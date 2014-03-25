@@ -36,6 +36,16 @@ class OpenExchangeRatesService
     protected $baseCurrency = '';
 
     /**
+     * @var \Guzzle\Http\Client
+     */
+    protected $client;
+
+    /**
+     * @var bool
+     */
+    protected $https;
+
+    /**
      * Service constructor
      *
      * @param string                 $openExchangeRatesAppId the app_id for OpenExchangeRates
@@ -56,12 +66,7 @@ class OpenExchangeRatesService
      */
     public function getEndPoint()
     {
-        $scheme = 'http';
-        if ($this->useHttps()) {
-            $scheme .= 's';
-        }
-
-        return $scheme.$this->endPoint;
+        return ($this->useHttps() ? 'https' : 'http').$this->endPoint;
     }
 
     /**
@@ -142,8 +147,8 @@ class OpenExchangeRatesService
     /**
      * Get the latest exchange rates
      *
-     * @param array  $symbols array of currency codes to get the rates for. Default empty (all
-     * currencies)
+     * @param array  $symbols array of currency codes to get the rates for.
+     *                        Default empty (all currencies)
      * @param string $base    Base currency, default NULL (gets it from config)
      *
      * @return array
@@ -156,11 +161,7 @@ class OpenExchangeRatesService
         ];
 
         if (count($symbols)) {
-            $query['symbols'] = array();
-            foreach ($symbols as $symbol) {
-                $query['symbols'][] = $symbol;
-            }
-            $query['symbols'] = implode(',', $query['symbols']);
+            $query['symbols'] = implode(',', $symbols);
         }
 
         $request = $this->client->createRequest(
