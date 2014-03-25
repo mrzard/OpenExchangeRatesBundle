@@ -9,7 +9,6 @@
 namespace Mrzard\OpenExchangeRatesBundle\Service;
 
 use Guzzle\Http\Client;
-use Guzzle\Http\Message\Request;
 use Guzzle\Http\Message\RequestInterface;
 
 /**
