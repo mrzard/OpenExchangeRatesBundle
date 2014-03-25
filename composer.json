@@ -1,0 +1,23 @@
+{
+    "name": "mrzard/open-exchange-rates-bundle",
+    "type": "symfony-bundle",
+    "description": "OpenExchangeRates API exposure for Symfony2",
+    "keywords": [],
+    "target-dir": "Mrzard/OpenExchangeRatesBundle",
+    "autoload": {
+        "psr-0": { "Mrzard\\OpenExchangeRatesBundle\\": "" }
+    },
+    "require": {
+        "php": ">=5.3.0",
+        "symfony/symfony": ">=2.3.0",
+        "guzzlehttp/guzzle": "~3.8"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name" : "Gonzalo Míguez",
+            "email" : "mrzard@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
