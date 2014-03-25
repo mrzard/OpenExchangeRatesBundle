@@ -1,8 +1,9 @@
-OpenExchangeRates service for Symfony2
-=====
 
-Installation
------
+OpenExchangeRates for Symfony2
+==============================
+
+## Installation
+
 ``` yml
 "require": {
     "php": ">=5.4.0",
@@ -12,6 +13,7 @@ Installation
 ```
 
 Then use composer to install the bundle:
+
 ``` bash
 $ curl -sS https://getcomposer.org/installer | php
 $ php composer.phar update mrzard/open-exchange-rates-bundle
@@ -30,7 +32,10 @@ return array(
 
 
 ## Configuration
-You will have to define your api id in the parameters.yml file of you environment.
+
+You will have to define your api id in the parameters.yml file of you
+environment.
+
 ``` yml
 open_exchange_rates_service:
     api_id: YOUR_API_ID
@@ -39,64 +44,74 @@ open_exchange_rates_service:
         base_currency: XXX #defaults to USD
 ```
 
-If you're using a free version, you won't need to change the `https` or `base_currency` as they
-only work fror Enterprise/Unlimited accounts
+If you're using a free version, you won't need to change the `https` or
+`base_currency` as they only work fror Enterprise/Unlimited accounts
 
-Usage
------
-You can access the service by getting it from the container under open_exchange_rates_service
+## Usage
 
-Keep in mind that some options will only work properly with an Enterprise/Unlimited Plan
+You can access the service by getting it from the container under 
+open_exchange_rates_service  
+
+Keep in mind that some options will only work properly with an
+Enterprise/Unlimited Plan
 
 ## Free features
 
 ### Get latest exchange rates
+
 ``` php
 /**
  * Get the latest exchange rates
  *
- * @param array  $symbols array of currency codes to get the rates for. Default empty (all
- * currencies)
+ * @param array  $symbols Currency codes to get the rates for. Default all
  * @param string $base    Base currency, default NULL (gets it from config)
  *
  * @return array
  */
-public function getLatest($symbols, $base = null)
+public function getLatest($symbols = array, $base = null)
+{
+}
 ```
-Only use the `$symbols` and `$base` parameters if you have an Enterprise or Unlimited plan.
 
-Sample returns:
-``` php
-/*output:
-    array (size=5)
-      'disclaimer' => string 'Exchange rates...'
-      'license' => string 'Data sourced from...'
-      'timestamp' => int 1395396061
-      'base' => string 'USD' (length=3)
-      'rates' =>
-        array (size=166)
-          'AED' => float 3.672721
-          'AFN' => float 56.747225
-          'ALL' => float 101.7573
-          'AMD' => float 417.366998
-          ...
-        )
-*/
+Only use the `$symbols` and `$base` parameters if you have an Enterprise or
+Unlimited plan.
+
+Output:
+
+```
+array (size=5)
+  'disclaimer' => string 'Exchange rates...'
+  'license' => string 'Data sourced from...'
+  'timestamp' => int 1395396061
+  'base' => string 'USD' (length=3)
+  'rates' =>
+    array (size=166)
+      'AED' => float 3.672721
+      'AFN' => float 56.747225
+      'ALL' => float 101.7573
+      'AMD' => float 417.366998
+      ...
+    )
+)
 ```
 
 ### Get available currencies
+
 ``` php
-    /**
-     * Gets a list of all available currencies
-     *
-     * @return array with keys = ISO codes, content = Currency Name
-     */
-    public function getCurrencies()
+/**
+ * Gets a list of all available currencies
+ *
+ * @return array with keys = ISO codes, content = Currency Name
+ */
+public function getCurrencies()
+{
+}
 ```
 
-Sample return:
-``` php
-array(
+Output:
+
+```
+array (size=5)
   'AED' => 'United Arab Emirates Dirham'
   'AFN' => 'Afghan Afghani'
   'ALL' => 'Albanian Lek'
@@ -108,6 +123,7 @@ array(
 
 
 ### Get historical data for a date
+
 ``` php
 /**
  * Get historical data
@@ -115,10 +131,13 @@ array(
  * @param \DateTime $date
  */
 public function getHistorical(\DateTime $date)
+{
+}
 ```
 
-Sample return:
-``` php
+Output:
+
+```
 array (size=5)
   'disclaimer' => string 'Exchange rates...'
   'license' => string 'Data sourced from...'
@@ -138,14 +157,22 @@ array (size=5)
       'AZN' => float 0.7841
       'BAM' => float 1.421715
       'BBD' => int 2
-      ....
+      ...
+    )
+)
 ```
 
 ## Developer / Unlimited features
+
 ### Get the latest exchange rates, limiting the return array
+
 ``` php
 $openExchangeRatesService->getLatest(['EUR', 'USD', 'COP']);
-/*output:
+```
+
+Output:
+
+```
 array (size=5)
   'disclaimer' => string 'Exchange rates ...'
   'license' => string 'Data sourced...'
@@ -157,13 +184,14 @@ array (size=5)
       'USD' => ...,
       'COP' => ...
     )
-*/
+)
 ```
-You can also change the base currency used to get the latest exchange rates with the second
-parameter
 
-## Unlimited features
+You can also change the base currency used to get the latest exchange rates with
+the second parameter
+
 ### Directly convert a quantity between currencies
+
 ``` php
-    $openExchangeRatesService->convert(10, 'USD', 'EUR');
+$openExchangeRatesService->convert(10, 'USD', 'EUR');
 ```
