@@ -1,10 +1,9 @@
-
 OpenExchangeRates for Symfony2
 ==============================
 
-
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mrzard/OpenExchangeRatesBundle/badges/quality-score.png?s=4d7b367f4b6e520f529836f96f6f8ff6fef7ceee)](https://scrutinizer-ci.com/g/mrzard/OpenExchangeRatesBundle/)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/ce4cd1cd-f4e5-42ed-8881-7a7d436f4f41/mini.png)](https://insight.sensiolabs.com/projects/ce4cd1cd-f4e5-42ed-8881-7a7d436f4f41)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mrzard/OpenExchangeRatesBundle/badges/quality-score.png?s=4d7b367f4b6e520f529836f96f6f8ff6fef7ceee)](https://scrutinizer-ci.com/g/mrzard/OpenExchangeRatesBundle/)
+[![Build Status](https://travis-ci.org/mrzard/OpenExchangeRatesBundle.svg?branch=master)](https://travis-ci.org/mrzard/OpenExchangeRatesBundle)
 
 ## Installation
 
