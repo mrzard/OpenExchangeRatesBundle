@@ -1,4 +1,5 @@
 <?php
+
 /**
  * OpenExchangeRates Bundle for Symfony2
  *
@@ -8,6 +9,8 @@
 
 namespace Mrzard\OpenExchangeRatesBundle\Service;
 
+use DateTime;
+use Exception;
 use Guzzle\Http\Client;
 use Guzzle\Http\Message\RequestInterface;
 
@@ -21,36 +24,46 @@ use Guzzle\Http\Message\RequestInterface;
 class OpenExchangeRatesService
 {
     /**
-     * @var string the app id
+     * @var string
+     * 
+     * the app id
      */
     protected $appId;
 
     /**
-     * @var string the api endpoint
+     * @var string
+     * 
+     * the api endpoint
      */
     protected $endPoint = '://openexchangerates.org/api';
 
     /**
      * @var string
+     * 
+     * base currency
      */
     protected $baseCurrency = '';
 
     /**
-     * @var \Guzzle\Http\Client
+     * @var Client
+     * 
+     * Client
      */
     protected $client;
 
     /**
      * @var bool
+     * 
+     * https is used
      */
     protected $https;
 
     /**
      * Service constructor
      *
-     * @param string                 $openExchangeRatesAppId the app_id for OpenExchangeRates
-     * @param array                  $apiOptions             Options for the OpenExchangeRatesApi
-     * @param \Guzzle\Http\Client    $client                 Guzzle client for requests
+     * @param string $openExchangeRatesAppId the app_id for OpenExchangeRates
+     * @param array  $apiOptions             Options for the OpenExchangeRatesApi
+     * @param Client $client                 Guzzle client for requests
      */
     public function __construct($openExchangeRatesAppId, $apiOptions, Client $client)
     {
@@ -153,7 +166,7 @@ class OpenExchangeRatesService
      *
      * @return array
      */
-    public function getLatest($symbols = array(), $base = null)
+    public function getLatest(array $symbols = array(), $base = null)
     {
         $query = [
             'app_id' => $this->getAppId(),
@@ -206,7 +219,7 @@ class OpenExchangeRatesService
             $request->send();
             //send the req and return the json
             return $request->getResponse()->json();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return array('error' => $request->getResponse()->json());
         }
     }
@@ -219,7 +232,7 @@ class OpenExchangeRatesService
      *
      * @return array
      */
-    public function getHistorical(\DateTime $date)
+    public function getHistorical(DateTime $date)
     {
         $request = $this->client->createRequest(
             'GET',
