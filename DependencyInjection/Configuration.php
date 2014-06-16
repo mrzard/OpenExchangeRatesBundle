@@ -33,6 +33,7 @@ class Configuration implements ConfigurationInterface
                     ->isRequired()
                 ->end()
                 ->arrayNode('api_configuration')
+                    ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('https')
                             ->defaultValue(false)
