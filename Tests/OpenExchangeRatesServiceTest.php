@@ -4,7 +4,7 @@ namespace Mrzard\OpenExchangeRatesBundle\Tests;
 
 use Guzzle\Http\Client;
 use Guzzle\Http\Message\Response;
-use Mrzard\OpenExchangeRatesBundle\Service\OpenExchangeRatesService;
+use Mrzard\OpenExchangeRates\Service\OpenExchangeRatesService;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\HttpKernel\KernelInterface;
