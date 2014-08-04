@@ -23,7 +23,7 @@ class OpenExchangeRatesServiceTest extends WebTestCase
     /**
      * @var OpenExchangeRatesService
      */
-    protected $mockedService;
+    protected $service;
 
     /**
      * Get service configuration
@@ -80,14 +80,11 @@ class OpenExchangeRatesServiceTest extends WebTestCase
             ->withAnyParameters()
             ->will($this->returnValue($fakeRequest));
 
-        $this->mockedService = $this
-            ->getMockBuilder(
-                'Mrzard\OpenExchangeRatesBundle\Service\OpenExchangeRatesService'
-            )
-            ->setConstructorArgs([$appId, $this->getServiceConfig(), $fakeClient])
-            ->setMethods(null)
-            ->getMock();
-
+        $this->service = new OpenExchangeRatesService(
+            $appId,
+            $this->getServiceConfig(),
+            $fakeClient
+        );
     }
 
     /**
@@ -106,18 +103,17 @@ class OpenExchangeRatesServiceTest extends WebTestCase
      */
     public function testService()
     {
-        $service = $this->mockedService;
-        $this->assertTrue($service->getLatest([], null)['ok'], 'getLatest failed');
-        $this->assertTrue($service->getLatest(['EUR'], null)['ok'], 'getLatest failed');
-        $this->assertTrue($service->getLatest(['EUR'], 'USD')['ok'], 'getLatest failed');
-        $this->assertTrue($service->getLatest([], 'USD')['ok'], 'getLatest failed');
-        $this->assertTrue($service->getCurrencies()['ok'], 'getCurrencies failed');
+        $this->assertTrue($this->service->getLatest([], null)['ok'], 'getLatest failed');
+        $this->assertTrue($this->service->getLatest(['EUR'], null)['ok'], 'getLatest failed');
+        $this->assertTrue($this->service->getLatest(['EUR'], 'USD')['ok'], 'getLatest failed');
+        $this->assertTrue($this->service->getLatest([], 'USD')['ok'], 'getLatest failed');
+        $this->assertTrue($this->service->getCurrencies()['ok'], 'getCurrencies failed');
         $this->assertTrue(
-            $service->convertCurrency(10, 'EUR', 'USD')['ok'],
+            $this->service->convertCurrency(10, 'EUR', 'USD')['ok'],
             'convertCurrency failed'
         );
         $this->assertTrue(
-            $service->getHistorical(new \DateTime('2014-01-01'))['ok'],
+            $this->service->getHistorical(new \DateTime('2014-01-01'))['ok'],
             'getHistorical failed'
         );
     }
@@ -177,18 +173,15 @@ class OpenExchangeRatesServiceTest extends WebTestCase
             ->withAnyParameters()
             ->will($this->returnValue($fakeRequest));
 
-
-        $this->mockedService = $this
-            ->getMockBuilder(
-                'Mrzard\OpenExchangeRates\Service\OpenExchangeRatesService'
-            )
-            ->setConstructorArgs([$appId, $this->getServiceConfig(), $fakeClient])
-            ->setMethods(null)
-            ->getMock();
+        $service = new OpenExchangeRatesService(
+            $appId,
+            $this->getServiceConfig(),
+            $fakeClient
+        );
 
         $this->assertArrayHasKey(
             'error',
-            $this->mockedService->getCurrencies(),
+            $service->getCurrencies(),
             'Error was not properly checked'
         );
     }
@@ -199,7 +192,7 @@ class OpenExchangeRatesServiceTest extends WebTestCase
     public function testConfig()
     {
         $this->assertEquals(
-            $this->mockedService->getAppId(),
+            $this->service->getAppId(),
             static::$kernel->getContainer()->getParameter('open_exchange_rates_service.api_id'),
             'App id does not match correctly'
         );
@@ -208,39 +201,39 @@ class OpenExchangeRatesServiceTest extends WebTestCase
 
         $this->assertEquals(
             $config['https'],
-            $this->mockedService->useHttps(),
+            $this->service->useHttps(),
             'https config mismatch'
         );
 
         $this->assertEquals(
             $config['base_currency'],
-            $this->mockedService->getBaseCurrency(),
+            $this->service->getBaseCurrency(),
             'base_currency config mismatch'
         );
 
-        $this->mockedService->setHttps(true);
+        $this->service->setHttps(true);
         $this->assertEquals(
             true,
-            $this->mockedService->useHttps(),
+            $this->service->useHttps(),
             'https setter failed'
         );
         $this->assertEquals(
             'https://openexchangerates.org/api',
-            $this->mockedService->getEndPoint(),
+            $this->service->getEndPoint(),
             'Endpoint does not look right'
         );
 
-        $this->mockedService->setHttps(false);
+        $this->service->setHttps(false);
         $this->assertEquals(
             'http://openexchangerates.org/api',
-            $this->mockedService->getEndPoint(),
+            $this->service->getEndPoint(),
             'Endpoint does not look right'
         );
 
-        $this->mockedService->setBaseCurrency('EUR');
+        $this->service->setBaseCurrency('EUR');
         $this->assertEquals(
             'EUR',
-            $this->mockedService->getBaseCurrency(),
+            $this->service->getBaseCurrency(),
             'base currency setter failed'
         );
     }
