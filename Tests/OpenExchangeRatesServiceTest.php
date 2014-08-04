@@ -7,6 +7,7 @@ use Guzzle\Http\Message\Response;
 use Mrzard\OpenExchangeRatesBundle\Service\OpenExchangeRatesService;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 class OpenExchangeRatesServiceTest extends WebTestCase
 {
