@@ -180,7 +180,7 @@ class OpenExchangeRatesServiceTest extends WebTestCase
 
         $this->mockedService = $this
             ->getMockBuilder(
-                'Mrzard\OpenExchangeRatesBundle\Service\OpenExchangeRatesService'
+                'Mrzard\OpenExchangeRates\Service\OpenExchangeRatesService'
             )
             ->setConstructorArgs([$appId, $this->getServiceConfig(), $fakeClient])
             ->setMethods(null)

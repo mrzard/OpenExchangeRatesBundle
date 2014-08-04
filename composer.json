@@ -10,6 +10,7 @@
     "require": {
         "php": ">=5.4.0",
         "symfony/symfony": ">=2.3.0",
+        "mrzard/open-exchange-rates-service": "~0.0.1",
         "guzzlehttp/guzzle": "~3.8"
     },
     "require-dev": {

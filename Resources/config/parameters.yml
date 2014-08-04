@@ -1,2 +1,2 @@
 parameters:
-    open_exchange_rates_service.class: Mrzard\OpenExchangeRatesBundle\Service\OpenExchangeRatesService
+    open_exchange_rates_service.class: Mrzard\OpenExchangeRates\Service\OpenExchangeRatesService
