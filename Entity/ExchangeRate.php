@@ -49,7 +49,7 @@ class ExchangeRate
      * Set rates
      *
      * @param string $rates
-     * @return Currency
+     * @return ExchangeRate
      */
     public function setRates($rates)
     {
@@ -72,7 +72,7 @@ class ExchangeRate
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return Currency
+     * @return ExchangeRate
      */
     public function setUpdatedAt($updatedAt)
     {
