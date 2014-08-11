@@ -198,3 +198,22 @@ the second parameter
 ``` php
 $openExchangeRatesService->convert(10, 'USD', 'EUR');
 ```
+
+Updating your local copy of exchange rates:
+1)Create the ExchangeRate entity by running
+```php
+php app/console doctrine:schema:update
+```
+
+2)Run the command that updates the rates
+``` php
+php app/console open-exchange-rates:updateRates
+```
+
+You can make this task run recursively by using a cron job (every night at 1 o'clock):
+0 1 * * * /usr/bin/php /PATH_TO_PROJECT/app/console open-exchange-rates:updateRates >> /var/log/updateRates.log 2>&1
+
+Converting amounts using the local saved data it's as easy as using the openExchangeRatesService:
+```php
+$this->get('mrzard.currency_converter_service')->convertAmount(10, 'USD', 'EUR');
+```
