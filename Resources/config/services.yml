@@ -8,3 +8,7 @@ services:
 
     open_exchange_rates_service.guzzle_client:
         class: Guzzle\Http\Client
+    mrzard.currency_converter_service:
+        class: %currency_converter_service.class%
+        arguments:
+            em: @doctrine.orm.entity_manager

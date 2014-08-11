@@ -1,2 +1,3 @@
 parameters:
     open_exchange_rates_service.class: Mrzard\OpenExchangeRates\Service\OpenExchangeRatesService
+    currency_converter_service.class: Mrzard\OpenExchangeRatesBundle\Services\CurrencyConverter

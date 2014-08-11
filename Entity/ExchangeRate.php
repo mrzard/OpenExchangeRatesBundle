@@ -23,7 +23,7 @@ class ExchangeRate
     /**
      * @var string
      *
-     * @ORM\Column(name="rates", type="string", length=255)
+     * @ORM\Column(name="rates", type="string", length=3000)
      */
     private $rates;
 
