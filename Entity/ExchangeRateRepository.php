@@ -12,4 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class ExchangeRateRepository extends EntityRepository
 {
+
+    public function getExchangeRateForCurrency($currency)
+    {
+        $query = $this->createQueryBuilder('c')
+                ->where('c.currency = :currency')
+                ->setParameter('currency', $currency)
+                ->setMaxResults(1);
+
+        return $query->getQuery()
+                        ->useResultCache(true, 86400, 'exchangeRate' . $currency)
+                        ->getOneOrNullResult();
+    }
+
 }

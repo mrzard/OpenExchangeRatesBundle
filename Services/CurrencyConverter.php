@@ -29,8 +29,9 @@ class CurrencyConverter
 
     public function getExchangeRate($from, $to)
     {
+
         /* @var $exchangeRate ExchangeRate */
-        $exchangeRate = $this->em->getRepository("OpenExchangeRatesBundle:ExchangeRate")->findOneBy(array('currency' => $from));
+        $exchangeRate = $this->em->getRepository("OpenExchangeRatesBundle:ExchangeRate")->getExchangeRateForCurrency($from);
 
         if (!$exchangeRate) {
             throw new \Exception(sprintf(
