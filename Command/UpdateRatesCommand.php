@@ -21,7 +21,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Doctrine\ORM\EntityManager;
 
-class getLatestExchangeRatesCommand extends ContainerAwareCommand
+class UpdateRatesCommand extends ContainerAwareCommand
 {
 
     protected function configure()
