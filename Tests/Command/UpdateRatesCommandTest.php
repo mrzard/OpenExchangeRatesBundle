@@ -25,12 +25,12 @@ class updateRatesCommandTest extends \PHPUnit_Framework_TestCase
     {
         $kernel = new \AppKernel("dev", true);
         $kernel->boot();
-        $this->_application = new \Symfony\Bundle\FrameworkBundle\Console\Application($kernel);
-        $this->_application->setAutoExit(false);
+        $application = new \Symfony\Bundle\FrameworkBundle\Console\Application($kernel);
+        $application->setAutoExit(false);
 
-        $this->_application->add(new UpdateRatesCommand());
+        $application->add(new UpdateRatesCommand());
 
-        $command = $this->_application->find('open-exchange-rates:updateRates');
+        $command = $application->find('open-exchange-rates:updateRates');
         $commandTester = new CommandTester($command);
         $commandTester->execute(
                 array(
