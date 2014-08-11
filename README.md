@@ -199,6 +199,7 @@ the second parameter
 $openExchangeRatesService->convert(10, 'USD', 'EUR');
 ```
 
+### Storing the exchange rates locally
 Updating your local copy of exchange rates:
 1)Create the ExchangeRate entity by running
 ```php
