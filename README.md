@@ -7,21 +7,9 @@ OpenExchangeRates for Symfony2
 
 ## Installation
 
-``` yml
-"require": {
-    "php": ">=5.4.0",
-    "symfony/symfony": ">=2.3.0",
-    "mrzard/open-exchange-rates-bundle": "dev-master"
-}
-```
-
-Then use composer to install the bundle:
-
 ``` bash
-$ curl -sS https://getcomposer.org/installer | php
-$ php composer.phar update mrzard/open-exchange-rates-bundle
+$ php composer.phar require mrzard/open-exchange-rates-bundle dev-master
 ```
-
 
 And register the bundle in your AppKernel.php file
 
