@@ -8,7 +8,7 @@ OpenExchangeRates for Symfony2
 ## Installation
 
 ``` bash
-$ php composer.phar require mrzard/open-exchange-rates-bundle dev-master
+$ php composer.phar require mrzard/open-exchange-rates-bundle ~0.2.0
 ```
 
 And register the bundle in your AppKernel.php file
