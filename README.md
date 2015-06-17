@@ -16,7 +16,7 @@ And register the bundle in your AppKernel.php file
 ``` php
 return array(
    // ...
-   new Mrzard\OpenExchangeRatesBundle\OpenExchangeRatesBundleBundle(),
+   new Mrzard\OpenExchangeRatesBundle\OpenExchangeRatesBundle(),
    // ...
 );
 ```
