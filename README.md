@@ -5,10 +5,15 @@ OpenExchangeRates for Symfony2
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mrzard/OpenExchangeRatesBundle/badges/quality-score.png?s=4d7b367f4b6e520f529836f96f6f8ff6fef7ceee)](https://scrutinizer-ci.com/g/mrzard/OpenExchangeRatesBundle/)
 [![Build Status](https://travis-ci.org/mrzard/OpenExchangeRatesBundle.svg?branch=master)](https://travis-ci.org/mrzard/OpenExchangeRatesBundle)
 
+## Version families
+Branch 2.0.0 will give support to Symfony >= 2.3
+
+Branch 3.0.0 will give support to Symfony >=3 (WIP)
+
 ## Installation
 
 ``` bash
-$ php composer.phar require mrzard/open-exchange-rates-bundle ~0.2.0
+$ php composer.phar require mrzard/open-exchange-rates-bundle ~2.0.0
 ```
 
 And register the bundle in your AppKernel.php file

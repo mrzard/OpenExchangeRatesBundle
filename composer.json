@@ -9,8 +9,9 @@
     },
     "require": {
         "php": ">=5.4.0",
-        "symfony/symfony": ">=2.3.18",
-        "mrzard/open-exchange-rates-service": "~0.1.0"
+        "symfony/symfony": ">=2.3.18,<3.0 ",
+        "guzzlehttp/guzzle": "~6",
+        "mrzard/open-exchange-rates-service": "~1.0.0"
     },
     "require-dev": {
         "phpunit/phpunit": ">=4.0.0"
