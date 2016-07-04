@@ -32,9 +32,10 @@ return array(
 You will have to define your api id in the parameters.yml file of you
 environment.
 
+Then, add this to your services.yml file
 ``` yml
-open_exchange_rates_service:
-    api_id: YOUR_API_ID
+open_exchange_rates:
+    api_id: %YOUR_API_ID_PARAM%
     api_configuration:
         https: true|false #defaults to false
         base_currency: XXX #defaults to USD
