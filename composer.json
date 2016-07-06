@@ -8,7 +8,7 @@
         "psr-0": { "Mrzard\\OpenExchangeRatesBundle\\": "" }
     },
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.5.0",
         "symfony/symfony": ">=2.3.18,<3.0 ",
         "guzzlehttp/guzzle": "~6",
         "mrzard/open-exchange-rates-service": "~1.0.0"
