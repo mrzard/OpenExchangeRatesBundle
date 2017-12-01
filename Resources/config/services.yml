@@ -1,6 +1,6 @@
 services:
     open_exchange_rates_service:
-        class: %open_exchange_rates_service.class%
+        class: "%open_exchange_rates_service.class%"
         arguments:
             app_id:            "%open_exchange_rates_service.api_id%"
             api_configuration: "%open_exchange_rates_service.api_configuration%"
